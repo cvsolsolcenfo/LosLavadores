@@ -22,6 +22,24 @@ public class Menu {
         System.out.println("Opción: ");
 
     }
+
+    public void mostrarOpcionesCuentas(){
+        System.out.println("Cual tipo de cuenta desea crear?");
+        System.out.println("\nOpciones");
+        System.out.println("1. Cuenta Corriente");
+        System.out.println("2. Cuenta de ahorros");
+        System.out.println("3. Cuenta de ahorro programado");
+
+    }
+    public int opcionesCuentas(){
+        int opcionElegir = 0;
+        while (opcionElegir < 1 || opcionElegir > 3){
+            mostrarOpcionesCuentas();
+            opcionElegir = Integer.valueOf(scanner.nextLine());
+        }
+        return opcionElegir;
+    }
+
     public int opciones(){
         int opcionElegir = 0;
         while (opcionElegir < 1 || opcionElegir > 7){
@@ -44,8 +62,11 @@ public class Menu {
     }
 
     public void mostrarTexto(String texto) {
+
         System.out.println(texto);
     }
+
+
 
     public double solicitaNumeroDouble(String info) {
         System.out.println(info);

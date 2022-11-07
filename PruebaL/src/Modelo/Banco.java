@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Banco {
 
     private String bancoNombre;
-    private ArrayList<Cuenta> listaCuentasCliente;
+    private ArrayList<CuentaCorriente> listaCuentasCliente;
     private ArrayList<Cliente> listaCliente;
 
     public Banco(String bancoNombre) {
         this.bancoNombre = bancoNombre;
-        listaCuentasCliente = new ArrayList<Cuenta>();
+        listaCuentasCliente = new ArrayList<CuentaCorriente>();
         listaCliente = new ArrayList<Cliente>();
 
     }
@@ -25,16 +25,16 @@ public class Banco {
         return true;
     }
 
-    public boolean addCuenta(Cuenta cuenta, String identificacion) {
+    public boolean addCuenta(CuentaCorriente cuentaCorriente, String identificacion) {
         for (int i = 0; i < listaCuentasCliente.size(); i++) {
-            if (cuenta.getCuentaNumero() == (listaCuentasCliente.get(i).getCuentaNumero())){
+            if (cuentaCorriente.getCuentaNumero() == (listaCuentasCliente.get(i).getCuentaNumero())){
                 return false;
             }
         }
-        listaCuentasCliente.add(cuenta);
+        listaCuentasCliente.add(cuentaCorriente);
         for (int i = 0; i < listaCliente.size(); i++) {
             if (listaCliente.get(i).getIdentificacion().equalsIgnoreCase(identificacion)){
-                listaCliente.get(i).agregarCuenta(cuenta);
+                listaCliente.get(i).agregarCuenta(cuentaCorriente);
             }
         }
         return true;
@@ -53,9 +53,9 @@ public class Banco {
         return listaCliente;
     }
 
-    public boolean realizaDeposito(int numeroCuenta, double importe) {
+    public boolean realizaDeposito(String numeroCuenta, double importe) {
         for (int i = 0; i < listaCuentasCliente.size(); i++) {
-            if(listaCuentasCliente.get(i).getCuentaNumero() == numeroCuenta) {
+            if(listaCuentasCliente.get(i).getCuentaNumero().equals(numeroCuenta)) {
                 if(listaCuentasCliente.get(i).deposito(importe)) {
                     return true;
                 }
@@ -63,9 +63,9 @@ public class Banco {
         }
         return false;
     }
-    public boolean realizaRetiro(int numeroCuenta, double debito) {
+    public boolean realizaRetiro(String numeroCuenta, double debito) {
         for (int i = 0; i < listaCuentasCliente.size(); i++) {
-            if(listaCuentasCliente.get(i).getCuentaNumero() == numeroCuenta) {
+            if(listaCuentasCliente.get(i).getCuentaNumero().equals(numeroCuenta)) {
                 if(listaCuentasCliente.get(i).retiro(debito)) {
                     return true;
                 }
@@ -74,10 +74,10 @@ public class Banco {
         return false;
     }
 
-    public double mostrarSaldo(int numeroCuenta) {
+    public double mostrarSaldo(String numeroCuenta) {
         double saldo = -1;
         for (int i = 0; i < listaCuentasCliente.size(); i++) {
-            if(listaCuentasCliente.get(i).getCuentaNumero() == numeroCuenta) {
+            if(listaCuentasCliente.get(i).getCuentaNumero().equals(numeroCuenta)) {
                 saldo = listaCuentasCliente.get(i).getSaldo();
             }
         }

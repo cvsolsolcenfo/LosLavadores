@@ -9,7 +9,7 @@ public class Cliente {
     private String identificacion;
     private String nacimiento;
     private String direccion;
-    private ArrayList<Cuenta> cuentas;
+    private ArrayList<CuentaCorriente> cuentaCorrientes;
 
 
     public Cliente(String nombre, int edad, String identificacion, String nacimiento, String direccion) {
@@ -18,7 +18,7 @@ public class Cliente {
         this.identificacion = identificacion;
         this.nacimiento = nacimiento;
         this.direccion = direccion;
-        cuentas = new ArrayList<Cuenta>();
+        cuentaCorrientes = new ArrayList<CuentaCorriente>();
     }
 
     public String getIdentificacion() {
@@ -26,8 +26,8 @@ public class Cliente {
     }
 
 
-    public void agregarCuenta(Cuenta cuenta) {
-        cuentas.add(cuenta);
+    public void agregarCuenta(CuentaCorriente cuentaCorriente) {
+        cuentaCorrientes.add(cuentaCorriente);
     }
 
     @Override
@@ -39,9 +39,9 @@ public class Cliente {
                 ", nacimiento='" + nacimiento + '\'' +
                 ", direccion='" + direccion + '\'' +
                 '}';
-        texto += "\tCantidad de cuentas: " + cuentas.size() + "\n";
-        for (int i = 0; i < cuentas.size(); i++) {
-            texto += "\t" + cuentas.get(i).toString() + "\n";
+        texto += "\tCantidad de cuentas: " + cuentaCorrientes.size() + "\n";
+        for (int i = 0; i < cuentaCorrientes.size(); i++) {
+            texto += "\t" + cuentaCorrientes.get(i).toString() + "\n";
         }
         return texto;
     }
